@@ -9,12 +9,17 @@
         h1 { color: #333; }
         input { margin: 20px 0; }
         button { background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; }
+        #explicacion { max-width: 300px; margin-right: 50px; max-height: 500px; box-shadow: 0px 0px 9px gray;}
     </style>
 </head>
 <body>
+    <div>
+        <img id="explicacion" src="{{ asset('storage/imposicion.png') }}" alt="Explicación del software">
+    </div>
     <div class="card">
         <h1>📚 Punilla Fanzine</h1>
         <p>Subí tu PDF en A4 (Vertical) para convertirlo en Fanzine.</p>
+        <p>(Realiza la imposición de paginas por ti)</p>
         
         @if(session('error_fanzine'))
             <div style="background: #fee2e2; color: #b91c1c; border: 1px solid #f87171; padding: 1rem; border-radius: 4px; margin-bottom: 20px; text-align: left;">
@@ -32,7 +37,6 @@
         @endif
 
         <div style="text-align: center; margin-bottom: 30px;">
-            <img src="{{ asset('img/explicativo_fanzine.png') }}" alt="Explicación del Proceso de Fanzine" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
         </div>
         <form action="{{ route('fanzine.convertir') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -43,5 +47,8 @@
             </button>
         </form>
     </div>
+
+    @include('layouts._footer')
+
 </body>
 </html>
