@@ -13,11 +13,11 @@ class FanzineController extends Controller
     public function convertir(Request $request)
     {
         $request->validate([
-            'pdf_file' => 'required|mimes:pdf|max:20480', // Máximo 20MB
+            'pdf_file' => 'required|mimes:pdf|max:30480', // Máximo 20MB
         ]);
 
         try {
-            ini_set("memory_limit", "512M");
+            ini_set("memory_limit", "1024M");
             set_time_limit(300);
 
             $path = $request->file('pdf_file')->getRealPath();
